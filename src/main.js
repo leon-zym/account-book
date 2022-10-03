@@ -1,26 +1,45 @@
-/* import { createApp } from 'vue'
-import App from './App.vue'
-
-createApp(App).mount('#app')
- */
-
-// 引入Vue工厂函数及根组件
 import { createApp } from 'vue'
 import App from './App.vue'
-
-import './index.css' //引入初始化样式
+import dayjs from 'dayjs'
+import 'lib-flexible/flexible'
 import router from './router'
+import { Button, Tabbar, TabbarItem, Form, Field, Icon, NavBar, Cell, CellGroup, Popup, List, PullRefresh, DatetimePicker, NumberKeyboard, Dialog, Progress, Rate, Divider } from 'vant';
+import 'vant/lib/index.css'; // 全局引入样式
+import './index.css'
 
-// 按需引入vant组件库
-import { Button, Tabbar, TabbarItem } from 'vant'
-
-// 创建实例对象
 const app = createApp(App)
 
-// 全局注册vant组件
-app.use(Button).use(Tabbar).use(TabbarItem)
+// 全局过滤器
+app.config.globalProperties.$filters = {
+  transTime(date) {
+    return dayjs(Number(date)).format('HH:mm')
+  },
+  transDay(value) {
+    return dayjs(value).format('MM-DD')
+  },
+  transYDM(value) {
+    return dayjs(value).format('YYYY-MM-DD HH:mm')
+  }
+}
 
 app.use(router)
+app.use(Tabbar);
+app.use(TabbarItem);
+app.use(Form)
+app.use(Field)
+app.use(Button) // 注册组件
+app.use(Icon)
+app.use(NavBar)
+app.use(CellGroup)
+app.use(Cell)
+app.use(Popup)
+app.use(List)
+app.use(PullRefresh)
+app.use(DatetimePicker)
+app.use(NumberKeyboard)
+app.use(Dialog)
+app.use(Progress)
+app.use(Rate)
+app.use(Divider)
 
-// 最后挂载
 app.mount('#app')

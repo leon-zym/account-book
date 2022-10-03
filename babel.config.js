@@ -1,14 +1,16 @@
 module.exports = {
-  presets: ['@vue/cli-plugin-babel/preset'],
-  // 配置babel，实现按需引入vant组件
+  presets: [
+    '@vue/cli-plugin-babel/preset'
+  ],
   plugins: [
     [
       'import',
       {
         libraryName: 'vant',
         libraryDirectory: 'es',
-        style: true,
+        style: name => `${name}/style/less`
       },
-    ],
-  ],
+      'vant',
+    ]
+  ]
 }

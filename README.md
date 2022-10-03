@@ -1,24 +1,8 @@
-# account-book
+# 项目介绍
 
-## Project setup
-```
-npm install
-```
+仿照官⽅微信记账本⼩程序的界⾯和功能，开发了其移动端 H5 版本。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+拥有账单列表展示⻚、数据可视化报表⻚、账单详情操作⻚、个⼈中⼼⻚等。可以按照消费类型和⽇期，对账单进⾏增删改查操作，并以多种视图过滤、展示账单情况。
+# 技术栈
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+使用到的技术栈有：Vue3 + Vant + Echarts + VueRouter + Axios + lib-ﬂexible 等。

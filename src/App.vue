@@ -1,34 +1,32 @@
 <template>
-  <!-- 路由展示 -->
-  <router-view></router-view>
-  <NavBar v-if="isShow"></NavBar>
+<!-- 和 vue-router3 一样，展示路由的组件的地方 -->
+  <router-view />
+  <NavBar v-if="show" />
 </template>
 
 <script>
-import NavBar from './components/NavBar'
+import NavBar from './components/NavBar.vue';
 import { useRouter } from 'vue-router'
 import { reactive, toRefs } from 'vue'
-
 export default {
   name: 'App',
   components: {
-    NavBar,
+    NavBar
   },
   setup() {
     const state = reactive({
-      menu: ['/home', '/data', '/user'],
-      isShow: false,
+      menu: ['/user', '/home', '/data'],
+      show: false
     })
-
     const router = useRouter()
     router.afterEach(() => {
-      // 控制底部导航栏只在menu中包含的页面中展示
-      state.isShow = state.menu.includes(router.currentRoute.value.path)
+      // menu 内的路径都是需要展示底部导航栏的
+      state.show = state.menu.includes(router.currentRoute.value.path)
     })
 
-    return { ...toRefs(state) }
-  },
+    return {
+      ...toRefs(state)
+    }
+  }
 }
 </script>
-
-<style></style>
